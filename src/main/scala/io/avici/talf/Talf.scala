@@ -43,5 +43,5 @@ object Talf extends App {
     Ok(Output(mes))
   }
 
-  Await.ready(Http.server.serve(":8081", compile.toService))
+  Await.ready(Http.server.serve(":" + sys.env("PORT"), compile.toService))
 }
