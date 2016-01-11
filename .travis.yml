@@ -1,3 +1,10 @@
 language: scala
 scala:
-  - 2.11.7
+- 2.11.7
+deploy:
+  provider: heroku
+  api_key:
+    secure: A7OwqYRcOLRNlnwiBc+zTBzaWFQ0q1ovqMa9S6t6Be6MwNcXxQgLzmi/POSqDbC81XWBaeshOKTedI612HDPYAXx9MinD+p0SbJVRf/UloN5MM945Tg7uZLg5XU7tsh/nQ3dz8tWpPkuE7NoinPtrX2Ch55AMQKWD/ZrXTHddDxow+agDRHBa6ctNFoXsAbKDLpsfL/HP/ctUbPsYFAKANmwpyYVBGyfC6bprkD2tWnPAgYpoz9LoPQv360t76ZQEhi8D6THHwFPyx5r2skLyex8Q+8INK3gYbOOwWm9vLQop8fuqVkiEmBJ8xDTL62GAeTRlpJLd3ASiWqCzTqTaAniuWpR9jf0OapXp2zk0GYDYW4mKTXuNHUHjxgb+0v21MJtwLp3rxZvq/hD7iBoCLWbeBH+HHiCJq4mq1sV7s033AR3yR4EZD9biI2EFo+GvOSgp00hXmyuZewxNCjPqsWOaATXg1Rc2E+NaJAt4j0jrL9vS6rlaa1mzcr4/Xt+f/yw/Vag4X8AO5V9urNBW+5E6EBTqgZkLfVCkSWs6Rh0gWZw0uyjCFBAFlcQQgL37pOBg9UUt8TjiouHQg1KEQASryfbJnLjN5L2vjEvlru5JIeRn32zCLStG8mR2Yw6oIL+J7tYChZdYKGTf0cC5KvkZGJ9qOwNpQLLBGHdBwI=
+  app: talf-dev
+  on:
+    repo: BakaBBQ/talf-lang
