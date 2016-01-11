@@ -24,3 +24,5 @@ libraryDependencies ++= Seq(
   "com.github.finagle" %% "finch-circe" % "0.9.2",
   "io.circe" %% "circe-generic" % "0.2.1"
 )
+
+enablePlugins(JavaAppPackaging)
