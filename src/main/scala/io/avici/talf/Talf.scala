@@ -50,6 +50,7 @@ object Talf extends App {
     Ok(Empty())
       .withHeader("Access-Control-Allow-Origin", "*")
       .withHeader("Access-Control-Allow-Methods", "GET, POST")
+      .withHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   }
 
   val api: Service[Request, Response] = (
