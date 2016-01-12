@@ -18,7 +18,9 @@ package io.avici.talf
   */
 
 
-import com.twitter.finagle.Http
+import com.twitter.finagle.param.Stats
+import com.twitter.finagle.{Service, Http}
+import com.twitter.finagle.http.{Request, Response}
 import com.twitter.util.{Time, Await}
 
 import io.finch._
@@ -32,6 +34,7 @@ object Talf extends App {
 
   case class Input(code: String)
   case class Output(ast: String)
+  case class Empty()
 
   val compile: Endpoint[Output] = post("compile" ? body.as[Input]) {i : Input =>
     val compiler = new TalfCompiler
@@ -43,5 +46,18 @@ object Talf extends App {
     Ok(Output(mes)).withHeader("Access-Control-Allow-Origin", "*")
   }
 
-  Await.ready(Http.server.serve(":" + sys.env("PORT"), compile.toService))
+  val compileOptions: Endpoint[Empty] = options("compile") {
+    Ok(Empty())
+      .withHeader("Access-Control-Allow-Origin", "*")
+      .withHeader("Access-Control-Allow-Methods", "GET, POST")
+  }
+
+  val api: Service[Request, Response] = (
+    compile :+: compileOptions
+    ).toService
+
+  val server = Http.server
+    .serve(s":${sys.env("PORT")}", api)
+
+  Await.ready(server)
 }

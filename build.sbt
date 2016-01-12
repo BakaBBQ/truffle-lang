@@ -8,7 +8,6 @@ resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-libraryDependencies += "org.parboiled" %% "parboiled" % "2.1.0"
 libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.5" % "test"
 
 libraryDependencies += "javax.servlet" % "javax.servlet-api" % "3.1.0"
