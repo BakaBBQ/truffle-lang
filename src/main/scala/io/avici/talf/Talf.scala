@@ -40,7 +40,7 @@ object Talf extends App {
       case Success(x) => x.spaces2
       case Failure(_) => "Failed"
     }
-    Ok(Output(mes))
+    Ok(Output(mes)).withHeader("Access-Control-Allow-Origin", "*")
   }
 
   Await.ready(Http.server.serve(":" + sys.env("PORT"), compile.toService))
