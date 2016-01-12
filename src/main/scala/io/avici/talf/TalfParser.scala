@@ -19,6 +19,7 @@ import io.avici.talf.ast._
   * limitations under the License.
 */
 
+
 import fastparse.all._
 
 class TalfParser{
