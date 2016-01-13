@@ -8,3 +8,5 @@ deploy:
   app: talf-dev
   on:
     repo: BakaBBQ/talf-lang
+jdk:
+  - oraclejdk8
