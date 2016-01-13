@@ -1,7 +1,7 @@
 package io.avici.talf
 
 import argonaut.Json
-import io.avici.talf.ast.Expr
+import io.avici.talf.ast.Ast.Expr
 import io.avici.talf.codegen.TalfCodegen
 
 import scala.util.{Success, Try}

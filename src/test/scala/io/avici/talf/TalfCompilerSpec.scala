@@ -3,6 +3,7 @@ package io.avici.talf
 import javax.script.ScriptEngineManager
 
 
+import io.avici.talf.parser.Statements
 import io.avici.talf.utils.EscodegenWrapper
 import org.scalacheck.Properties
 
@@ -45,5 +46,15 @@ object TalfCompilerSpec extends Properties("TalfCompiler"){
     val exp = s"$x+$y"
     val js = codegenWrapper.ast2js(compiler.compile(exp).get)
     (engine.eval(js).asInstanceOf[Int] == x + y)
+  }
+
+  property("experimentalParser") = Prop.forAll(simpleNumber){(x : Int) =>
+    val p = new Statements
+    val pR = p.singleInput.parse("x = 3")
+    pR match {
+      case fastparse.core.Parsed.Failure(_,_,_) => false
+      case fastparse.core.Parsed.Success(_,_) => true
+      case _ => false
+    }
   }
 }

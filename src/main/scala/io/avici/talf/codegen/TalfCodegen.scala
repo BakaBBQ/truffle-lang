@@ -19,6 +19,8 @@ import argonaut._, Argonaut._
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
+
+import io.avici.talf.ast.Ast._
 class TalfCodegen {
   def codegen(ast : Expr) : Json = {
     Json("type" := "Program", "body" := List(
