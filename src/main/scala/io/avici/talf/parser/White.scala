@@ -21,6 +21,6 @@ import fastparse.WhitespaceApi
 object White {
   val WsApi = WhitespaceApi.Wrapper {
     import fastparse.all._
-    NoTrace(" ".rep)
+    NoTrace(" ".rep) | Lexical.comment
   }
 }

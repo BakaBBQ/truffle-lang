@@ -1,7 +1,7 @@
 package io.avici.talf.codegen
 
 import io.avici.talf.ast._
-import argonaut._, Argonaut._
+import io.circe.{Encoder, Json}
 
 /**
   * Created by Baqiao (Charles) Liu on 1/10/2016.
@@ -21,27 +21,14 @@ import argonaut._, Argonaut._
   */
 
 import io.avici.talf.ast.Ast._
+import io.circe._
+import io.circe.syntax._
 class TalfCodegen {
+  import Json._
+
+  type TalfProgram = Seq[Ast.Stmt]
+
   def codegen(ast : Expr) : Json = {
-    Json("type" := "Program", "body" := List(
-      Json(
-        "type" := "ExpressionStatement",
-        "expression" := talfExpr2Js(ast)
-      )
-    ))
-  }
-
-  def convertToBinaryExpr(operator: String, lhs: Expr, rhs: Expr) : Json = {
-    Json("type" := "BinaryExpression", "operator" := operator, "left" := talfExpr2Js(lhs), "right" := talfExpr2Js(rhs))
-  }
-
-  def talfExpr2Js(expr : Expr) : Json = {
-    expr match {
-      case Value(x) => Json("type" := "Literal", "value" := x.toInt, "raw" := x)
-      case Addition(lhs, rhs) => convertToBinaryExpr("+", lhs, rhs)
-      case Subtraction(lhs, rhs) => convertToBinaryExpr("-", lhs, rhs)
-      case Division(lhs, rhs) => convertToBinaryExpr("/", lhs, rhs)
-      case Multiplication(lhs, rhs) => convertToBinaryExpr("*", lhs, rhs)
-    }
+    Map("a" -> "b").asJson
   }
 }
