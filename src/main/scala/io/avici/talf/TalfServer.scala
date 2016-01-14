@@ -30,7 +30,7 @@ import io.circe.generic.auto._
 import scala.util.{Failure, Success}
 
 
-object Talf extends App {
+object TalfServer extends App {
 
   case class Input(code: String)
   case class Output(ast: String)

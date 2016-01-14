@@ -51,6 +51,7 @@ object Ast {
     case object Sub extends Operator
     case object Mult extends Operator
     case object Div extends Operator
+    case object Pow extends Operator
   }
 
   sealed trait BoolOp

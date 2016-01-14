@@ -45,6 +45,7 @@ object Expressions {
   val GtE = op(">=", Ast.CmpOp.GtE)
   val LtE = op("<=", Ast.CmpOp.LtE)
   val Eq = op("==", Ast.CmpOp.Eq)
+  val Pow = op("**", Ast.Operator.Pow)
   val CompOp = P( LtE|GtE|Eq|Gt|Lt )
 
   def chain(p: P[Ast.Expr], op: P[Ast.Operator]) = {
@@ -60,7 +61,15 @@ object Expressions {
 
   val arithExpr = P( chain(term, Add | Sub) )
   val term = P( chain(factor, Mult | Div))
-  val factor: P[Ast.Expr] = P( ("+"|"-") ~ factor)
+  val factor: P[Ast.Expr] = P( ("+"|"-") ~ factor | power)
+  val power: P[Ast.Expr] = P(atom ~ trailer.rep ~ (Pow ~ factor).? ).map{
+    case (lhs, trailers, rhs) =>
+      val left = trailers.foldLeft(lhs)((l, t) => t(l))
+      rhs match {
+        case None => left
+        case Some((op, right)) => Ast.Expr.BinOp(left, op, right)
+      }
+  }
 
   val test: P[Ast.Expr] = {
     val ternary = P( orTest ~ (kw("if") ~ orTest ~ kw("else") ~ test).?).map {
@@ -82,8 +91,9 @@ object Expressions {
 
   val notTest: P[Ast.Expr] = P(("not" ~ notTest).map(Ast.Expr.UnaryOp(Ast.UnaryOp.Not, _)) | comparison)
 
-  val comparison: P[Ast.Expr] = P( expr ~ (CompOp ~ expr).rep).map{
-    case (lhs, Nil) => lhs
+  val comparison: P[Ast.Expr] = P( expr ~ (CompOp ~ expr).rep).map {
+    case (lhs, Nil) =>
+      lhs
     case (lhs, chunks) =>
       val (ops, vals) = chunks.unzip
       Ast.Expr.Compare(lhs, ops, vals)

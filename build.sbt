@@ -25,3 +25,5 @@ libraryDependencies ++= Seq(
 )
 
 enablePlugins(JavaAppPackaging)
+
+mainClass := Some("TalfServer")
