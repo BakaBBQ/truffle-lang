@@ -2,7 +2,8 @@ package io.avici.talf.parser
 
 
 import fastparse.all
-import fastparse.all._
+import fastparse.noApi._
+import White.WsApi._
 import io.avici.talf.ast.Ast
 import Expressions._
 import Lexical.kw
@@ -73,5 +74,4 @@ class Statements {
       val x = collapseDottedName(name)
       Ast.Expr.Call(x, args)
   }
-
 }

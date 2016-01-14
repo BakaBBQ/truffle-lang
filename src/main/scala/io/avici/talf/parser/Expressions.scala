@@ -3,9 +3,8 @@ package io.avici.talf.parser
 
 import io.avici.talf.ast.Ast
 
-import fastparse.Implicits.Sequencer
-import fastparse.all._
-import io.avici.talf.ast.Ast.Identifier
+import fastparse.noApi._
+import White.WsApi._
 
 /**
   * Created by Baqiao (Charles) Liu on 1/13/2016.

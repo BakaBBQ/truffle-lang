@@ -1,6 +1,6 @@
 package io.avici.talf
 
-import io.avici.talf.parser.Expressions
+import io.avici.talf.parser.{Statements, Expressions}
 
 import scala.collection.immutable.HashMap
 
@@ -21,12 +21,11 @@ import scala.collection.immutable.HashMap
   * limitations under the License.
   */
 object TalfRepl extends App{
+  val stmt = new Statements
   val parsers = HashMap(
+    "All" -> stmt.singleInput,
     "Atom" -> Expressions.atom,
     "Test" -> Expressions.test,
-    "ListContent" -> Expressions.listContents,
-    "OrTest" -> Expressions.orTest,
-    "NotTest" -> Expressions.notTest,
     "Comparison" -> Expressions.comparison
   )
   println("Repl Running")

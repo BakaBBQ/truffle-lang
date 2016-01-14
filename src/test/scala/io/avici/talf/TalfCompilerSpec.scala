@@ -1,8 +1,5 @@
 package io.avici.talf
 
-import javax.script.ScriptEngineManager
-
-
 import io.avici.talf.parser.Statements
 import io.avici.talf.utils.EscodegenWrapper
 import org.scalacheck.Properties
