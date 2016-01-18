@@ -5,6 +5,7 @@ version := "1.0"
 scalaVersion := "2.11.7"
 
 resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
+resolvers += Resolver.sonatypeRepo("releases")
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
@@ -19,11 +20,17 @@ libraryDependencies += "io.argonaut" %% "argonaut-monocle" % "6.2-SNAPSHOT" chan
 libraryDependencies += "com.lihaoyi" %% "fastparse" % "0.3.4"
 
 libraryDependencies ++= Seq(
-  "com.github.finagle" %% "finch-core" % "0.9.2",
-  "com.github.finagle" %% "finch-circe" % "0.9.2",
-  "io.circe" %% "circe-generic" % "0.2.1"
+  "io.circe" %% "circe-core" % "0.2.1",
+  "io.circe" %% "circe-generic" % "0.2.1",
+  "io.circe" %% "circe-parse" % "0.2.1"
 )
 
-enablePlugins(JavaAppPackaging)
+libraryDependencies ++= Seq(
+  "com.github.finagle" %% "finch-core" % "0.9.2",
+  "com.github.finagle" %% "finch-circe" % "0.9.2"
+)
 
-mainClass := Some("TalfServer")
+libraryDependencies +=
+  "com.github.alexarchambault" %% "argonaut-shapeless_6.1" % "1.0.0-M1"
+
+enablePlugins(JavaAppPackaging)
