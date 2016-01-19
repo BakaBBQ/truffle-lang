@@ -1,6 +1,6 @@
-package io.avici.talf
+package io.avici.truffle
 
-import io.avici.talf.parser.{Statements, Expressions}
+import io.avici.truffle.parser.{Statements, Expressions}
 
 import scala.collection.immutable.HashMap
 
@@ -20,7 +20,7 @@ import scala.collection.immutable.HashMap
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-object TalfRepl extends App{
+object TruffleRepl extends App{
   val stmt = new Statements
   val parsers = HashMap(
     "All" -> stmt.singleInput,

@@ -1,8 +1,8 @@
-package io.avici.talf
+package io.avici.truffle
 
 import fastparse.core.Parsed
-import io.avici.talf.ast.Ast
-import io.avici.talf.parser.Expressions
+import io.avici.truffle.ast.Ast
+import io.avici.truffle.parser.Expressions
 import org.scalacheck.Properties
 import org.scalacheck._
 

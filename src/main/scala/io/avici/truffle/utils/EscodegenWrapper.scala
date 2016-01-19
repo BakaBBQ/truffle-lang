@@ -1,7 +1,10 @@
-package io.avici.talf
+package io.avici.truffle.utils
 
-import org.scalacheck.Properties
-import org.scalacheck._
+import java.io.FileReader
+import javax.script.{Invocable, ScriptEngine}
+
+import argonaut.Json
+
 
 /**
   * Created by Baqiao (Charles) Liu on 1/13/2016.
@@ -19,6 +22,15 @@ import org.scalacheck._
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-object EscodegenWrapperSpec extends Properties("TalfCompiler") {
-
+class EscodegenWrapper(engine: ScriptEngine){
+  val escodegenSrc = getClass.getResource("/escodegen.browser.js")
+  val wrapperSrc = getClass.getResource("/escodegenWrapper.js")
+  val fr = new FileReader(escodegenSrc.getFile)
+  engine.eval(fr)
+  engine.eval(new FileReader(wrapperSrc.getFile))
+  def ast2js(ast: Json): String = {
+    val invocable = engine.asInstanceOf[Invocable]
+    val result = invocable.invokeFunction("codegen",ast.spaces2).asInstanceOf[String]
+    return result
+  }
 }

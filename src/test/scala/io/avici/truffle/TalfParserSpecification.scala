@@ -1,6 +1,6 @@
-package io.avici.talf
+package io.avici.truffle
 
-import io.avici.talf.ast._
+import io.avici.truffle.ast._
 import org.scalacheck._
 
 import scala.util.Success
@@ -20,7 +20,7 @@ import scala.util.Success
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-object TalfParserSpecification extends Properties("TalfParser"){
+object truffleParserSpecification extends Properties("truffleParser"){
   val smallPosInt = Gen.choose(0,10000)
   property("numberParser") = Prop.forAll(smallPosInt){(x : Int) =>
     x < 1000000

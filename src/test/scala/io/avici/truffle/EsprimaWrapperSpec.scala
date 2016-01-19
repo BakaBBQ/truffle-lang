@@ -1,11 +1,11 @@
-package io.avici.talf
+package io.avici.truffle
 
 
 import org.scalacheck.Properties
 import org.scalacheck._
 import org.scalacheck.Gen._
 import Arbitrary.arbitrary
-import io.avici.talf.esprima.JsAst
+import io.avici.truffle.esprima.JsAst
 
 import argonaut._
 import Argonaut._

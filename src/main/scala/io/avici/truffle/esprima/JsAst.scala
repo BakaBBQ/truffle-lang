@@ -1,4 +1,4 @@
-package io.avici.talf.esprima
+package io.avici.truffle.esprima
 
 
 import argonaut._

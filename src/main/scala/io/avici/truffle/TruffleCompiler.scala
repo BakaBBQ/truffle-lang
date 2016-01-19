@@ -1,10 +1,14 @@
-package io.avici.talf
+package io.avici.truffle
 
-import argonaut._
-import Argonaut._
+import io.circe.Json
+import io.avici.truffle.ast.Ast.Expr
+import io.avici.truffle.codegen.{TruffleCodegen}
+
+import scala.util.{Success, Try}
+
 
 /**
-  * Created by Baqiao (Charles) Liu on 1/15/2016.
+  * Created by Baqiao (Charles) Liu on 1/11/2016.
   */
 
 /**
@@ -19,17 +23,11 @@ import Argonaut._
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-object Playground extends App{
-  import io.avici.talf.esprima.JsAst._
-
-
-  println(
-      Program(
-        List(
-          ExpressionStatement(
-            CallExpression(Identifier("println"), List(StringLiteral("hi")))
-          )
-        )
-      ).asJson.spaces2
-    )
+class TruffleCompiler {
+  def compile(str : String) : Try[Json] = {
+    val parser = new TruffleParser()
+    val ast: Try[Expr] = Success(parser.parse(str))
+    val codegen = new TruffleCodegen()
+    ast.map(codegen.codegen)
+  }
 }

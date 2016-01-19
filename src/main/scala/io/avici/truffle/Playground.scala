@@ -1,9 +1,10 @@
-package io.avici.talf.parser
+package io.avici.truffle
 
-import fastparse.WhitespaceApi
+import argonaut._
+import Argonaut._
 
 /**
-  * Created by Baqiao (Charles) Liu on 1/14/2016.
+  * Created by Baqiao (Charles) Liu on 1/15/2016.
   */
 
 /**
@@ -18,9 +19,17 @@ import fastparse.WhitespaceApi
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-object White {
-  val WsApi = WhitespaceApi.Wrapper {
-    import fastparse.all._
-    NoTrace(" ".rep) | Lexical.comment
-  }
+object Playground extends App{
+  import io.avici.truffle.esprima.JsAst._
+
+
+  println(
+      Program(
+        List(
+          ExpressionStatement(
+            CallExpression(Identifier("println"), List(StringLiteral("hi")))
+          )
+        )
+      ).asJson.spaces2
+    )
 }

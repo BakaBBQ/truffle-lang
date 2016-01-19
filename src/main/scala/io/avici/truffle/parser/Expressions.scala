@@ -1,7 +1,7 @@
-package io.avici.talf.parser
+package io.avici.truffle.parser
 
 
-import io.avici.talf.ast.Ast
+import io.avici.truffle.ast.Ast
 
 import fastparse.noApi._
 import White.WsApi._

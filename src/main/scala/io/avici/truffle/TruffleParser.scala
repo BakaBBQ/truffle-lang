@@ -1,7 +1,7 @@
-package io.avici.talf
+package io.avici.truffle
 
-import io.avici.talf.ast.Ast.Value
-import io.avici.talf.ast._
+import io.avici.truffle.ast.Ast.Value
+import io.avici.truffle.ast._
 
 /**
   * Created by Baqiao (Charles) Liu on 1/10/2016.
@@ -24,7 +24,7 @@ import io.avici.talf.ast._
 import fastparse.all._
 
 
-@deprecated class TalfParser{
+@deprecated class TruffleParser{
   val number: P[Int] = P( CharIn('0'to'9').rep(1).!.map(_.toInt) )
   val parens: P[Int] = P( "(" ~/ addSub ~ ")" )
   val factor: P[Int] = P( number | parens )

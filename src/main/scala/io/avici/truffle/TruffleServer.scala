@@ -1,4 +1,4 @@
-package io.avici.talf
+package io.avici.truffle
 
 /**
   * Created by Baqiao (Charles) Liu on 1/10/2016.
@@ -30,14 +30,14 @@ import io.circe.generic.auto._
 import scala.util.{Failure, Success}
 
 
-object TalfServer extends App {
+object TruffleServer extends App {
 
   case class Input(code: String)
   case class Output(ast: String)
   case class Empty()
 
   val compile: Endpoint[Output] = post("compile" ? body.as[Input]) {i : Input =>
-    val compiler = new TalfCompiler
+    val compiler = new TruffleCompiler
     val res = compiler.compile(i.code)
     val mes = res match {
       case Success(x) => x.spaces2

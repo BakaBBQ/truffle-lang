@@ -1,4 +1,4 @@
-package io.avici.talf.parser
+package io.avici.truffle.parser
 
 /**
   * Created by Baqiao (Charles) Liu on 1/13/2016.
@@ -18,7 +18,7 @@ package io.avici.talf.parser
   */
 object Lexical {
   import fastparse.all._
-  import io.avici.talf.ast.Ast
+  import io.avici.truffle.ast.Ast
 
   val comment = P( "--" ~ CharsWhile(_ != '\n', min = 0))
   val lowercase = P( CharIn('a' to 'z') )

@@ -1,10 +1,10 @@
-package io.avici.talf.codegen
+package io.avici.truffle
 
-import io.avici.talf.ast._
-import io.circe.{Encoder, Json}
+import org.scalacheck.Properties
+import org.scalacheck._
 
 /**
-  * Created by Baqiao (Charles) Liu on 1/10/2016.
+  * Created by Baqiao (Charles) Liu on 1/13/2016.
   */
 
 /**
@@ -19,16 +19,6 @@ import io.circe.{Encoder, Json}
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
+object EscodegenWrapperSpec extends Properties("truffleCompiler") {
 
-import io.avici.talf.ast.Ast._
-import io.circe._
-import io.circe.syntax._
-class TalfCodegen {
-  import Json._
-
-  type TalfProgram = Seq[Ast.Stmt]
-
-  def codegen(ast : Expr) : Json = {
-    Map("a" -> "b").asJson
-  }
 }

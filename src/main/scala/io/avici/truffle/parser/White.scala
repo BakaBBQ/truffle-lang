@@ -1,14 +1,9 @@
-package io.avici.talf
+package io.avici.truffle.parser
 
-import io.circe.Json
-import io.avici.talf.ast.Ast.Expr
-import io.avici.talf.codegen.TalfCodegen
-
-import scala.util.{Success, Try}
-
+import fastparse.WhitespaceApi
 
 /**
-  * Created by Baqiao (Charles) Liu on 1/11/2016.
+  * Created by Baqiao (Charles) Liu on 1/14/2016.
   */
 
 /**
@@ -23,11 +18,9 @@ import scala.util.{Success, Try}
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-class TalfCompiler {
-  def compile(str : String) : Try[Json] = {
-    val parser = new TalfParser()
-    val ast: Try[Expr] = Success(parser.parse(str))
-    val codegen = new TalfCodegen()
-    ast.map(codegen.codegen)
+object White {
+  val WsApi = WhitespaceApi.Wrapper {
+    import fastparse.all._
+    NoTrace(" ".rep) | Lexical.comment
   }
 }
