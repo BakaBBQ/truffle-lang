@@ -33,4 +33,15 @@ libraryDependencies ++= Seq(
 libraryDependencies +=
   "com.github.alexarchambault" %% "argonaut-shapeless_6.1" % "1.0.0-M1"
 
+libraryDependencies ++= Seq(
+  "eu.timepit" %% "refined"            % "0.3.3",
+  "eu.timepit" %% "refined-scalaz"     % "0.3.3",         // optional, JVM only
+  "eu.timepit" %% "refined-scodec"     % "0.3.3",         // optional
+  "eu.timepit" %% "refined-scalacheck" % "0.3.3" % "test" // optional
+)
+
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0-M5" cross CrossVersion.full)
+
+libraryDependencies += "com.github.mpilquist" %% "simulacrum" % "0.5.0"
+
 enablePlugins(JavaAppPackaging)

@@ -60,7 +60,7 @@ object JsAst {
       }
     }
 
-  implicit def DeclarationEncodeJson = EncodeJson{it: Seq[Declaration] =>
+  implicit def DeclarationEncodeJson = EncodeJson{it: Declaration =>
     it match {
       case it: FunctionDeclaration => FunctionDeclarationEncodeJson(it).asJson
       case it: VariableDeclaration => VariableDeclarationEncodeJson(it).asJson
@@ -387,7 +387,7 @@ object JsAst {
       jString(it.name))
 
 
-  case class UpdateExpression(operator: UpdateOperator, argument: Expression, prefix: Boolean) {
+  case class UpdateExpression(operator: UpdateOperator, argument: Expression, prefix: Boolean) extends Expression {
     val `type` = "UpdateExpression"
   }
 
@@ -499,7 +499,7 @@ object JsAst {
   implicit def BinaryExpressionEncodeJson: EncodeJson[BinaryExpression] =
     jencode4L{it: BinaryExpression => (it.`type`, it.operator, it.left, it.right)}("type", "operator", "left", "right")
 
-  case class AssignmentExpression(operator: AssignmentOperator, left: Either[Pattern, Expression], right: Expression) extends Expression {
+  case class AssignmentExpression(operator: AssignmentOperator, left: Expression, right: Expression) extends Expression {
     val `type` = "AssignmentExpression"
   }
 

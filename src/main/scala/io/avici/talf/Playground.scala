@@ -23,22 +23,13 @@ object Playground extends App{
   import io.avici.talf.esprima.JsAst._
 
 
-//  println(
-  //    Program(
-  //      List(
-  //        ExpressionStatement(
-  //          CallExpression(Identifier("println"), List(StringLiteral("hi")))
-  //        )
-  //      )
-  //    )
-  //  )
-//  println(
-//    ExpressionStatement(
-//      CallExpression(Identifier("println"), List(StringLiteral("hi")))
-//    ).asJson.spaces2
-//  )
-
-  val exp = CallExpression(Identifier("println"), List(StringLiteral("hi")))
-
-  println(exp.asJson.spaces2)
+  println(
+      Program(
+        List(
+          ExpressionStatement(
+            CallExpression(Identifier("println"), List(StringLiteral("hi")))
+          )
+        )
+      ).asJson.spaces2
+    )
 }
